@@ -31,6 +31,7 @@ Instructions
 7. add crushed tomatoes, pureed tomatoes, water, and tomato paste into pot
 8. add herbs, salt, and pepper to pot along with reserved ribs
 9. simmer for at least 3 hours or until ribs are tender
+10. remove and discard ribs
 
 Meatballs
 =========
@@ -55,7 +56,7 @@ Instructions
 ------------
 1. Preheat oven to 375F
 2. Combine all ingredients and mix well
-3. Divide into 36 meatballs
+3. Divide into 32 meatballs
 4. Place on greased half sheet pan
 5. Bake 30 minutes
 6. Let cool and then place under broiler to crisp outside
