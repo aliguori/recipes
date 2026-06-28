@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: 6in 4in; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { width: 6in; height: 4in; }
+
+  body {
+    background: #fdfcf7;
+    color: #2b2b2b;
+    font-family: "Baskerville", "Hoefler Text", Georgia, serif;
+    padding: 0.18in;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .card {
+    border: 1px solid #d8d3c4;
+    width: 100%;
+    height: 100%;
+    padding: 0.16in 0.22in 0.14in;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1.title {
+    text-align: center;
+    font-family: "Didot", "Bodoni 72", "Baskerville", Georgia, serif;
+    font-weight: 400;
+    font-size: 21pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+  }
+
+  .rule { border-bottom: 1px solid #2b2b2b; }
+  .rule.thin { border-bottom: 1px solid #555; }
+
+  /* stats row */
+  .stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 4px;
+  }
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 1;
+    justify-content: center;
+  }
+  .stat svg { flex: none; }
+  .stat .label {
+    font-family: "Optima", "Gill Sans", "Baskerville", sans-serif;
+    letter-spacing: 0.14em;
+    font-size: 6.6pt;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: #3a3a3a;
+  }
+  .stat .label b { font-weight: 600; }
+  .divider { width: 1px; align-self: stretch; background: #c9c4b6; margin: 2px 0; }
+
+  /* body columns */
+  .content {
+    display: flex;
+    flex: 1;
+    padding-top: 8px;
+    min-height: 0;
+  }
+  .col-ingredients { width: 38%; padding-right: 10px; }
+  .col-directions { width: 62%; padding-left: 12px; border-left: 1px solid #2b2b2b; }
+
+  h2 {
+    font-family: "Optima", "Gill Sans", "Baskerville", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 10pt;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  .subhead {
+    font-weight: 700;
+    font-size: 7pt;
+    margin: 4px 0 1px;
+  }
+  .subhead:first-of-type { margin-top: 0; }
+
+  ul { list-style: none; }
+  ul li {
+    position: relative;
+    font-size: 6.7pt;
+    line-height: 1.28;
+    padding-left: 9px;
+    margin-bottom: 1.5px;
+  }
+  ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 4.5px;
+    width: 2.6px; height: 2.6px;
+    border-radius: 50%;
+    background: #2b2b2b;
+  }
+
+  ol { list-style: none; counter-reset: step; }
+  ol li {
+    position: relative;
+    counter-increment: step;
+    font-size: 6.7pt;
+    line-height: 1.26;
+    padding-left: 13px;
+    margin-bottom: 2.5px;
+  }
+  ol li::before {
+    content: counter(step) ".";
+    position: absolute;
+    left: 0; top: 0;
+    font-weight: 600;
+    font-size: 6.7pt;
+  }
+  .lead { font-weight: 700; }
+
+  /* optional attribution footer, pinned to the bottom of the card */
+  .source {
+    margin-top: auto;
+    padding-top: 5px;
+    text-align: center;
+    font-style: italic;
+    font-size: 6pt;
+    letter-spacing: 0.03em;
+    color: #8a8275;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1 class="title">RECIPE TITLE</h1>
+    <div class="rule"></div>
+
+    <div class="stats">
+      <div class="stat">
+        <!-- plate, fork & knife = servings / yield -->
+        <svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="#2b2b2b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="34" cy="32" r="15"/>
+          <circle cx="34" cy="32" r="9"/>
+          <!-- fork: three tines into a handle -->
+          <line x1="5" y1="15" x2="5" y2="25"/>
+          <line x1="9" y1="15" x2="9" y2="25"/>
+          <line x1="13" y1="15" x2="13" y2="25"/>
+          <path d="M5 25 H13 M9 25 V49"/>
+          <!-- knife: blade (back edge + cutting edge) into a handle -->
+          <path d="M57 15 V31 M57 15 C53 19 53 28 57 31"/>
+          <line x1="57" y1="31" x2="57" y2="49"/>
+        </svg>
+        <div class="label"><b>4</b><br>Servings</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="stat">
+        <!-- stopwatch = prep time -->
+        <svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="#2b2b2b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="36" r="19"/>
+          <line x1="32" y1="36" x2="32" y2="25"/>
+          <line x1="32" y1="36" x2="40" y2="36"/>
+          <line x1="32" y1="10" x2="32" y2="17"/>
+          <line x1="26" y1="10" x2="38" y2="10"/>
+          <line x1="50" y1="20" x2="54" y2="16"/>
+        </svg>
+        <div class="label">Prep Time:<br><b>10 Min</b></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="stat">
+        <!-- stopwatch = cook time -->
+        <svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="#2b2b2b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="36" r="19"/>
+          <line x1="32" y1="36" x2="32" y2="25"/>
+          <line x1="32" y1="36" x2="40" y2="36"/>
+          <line x1="32" y1="10" x2="32" y2="17"/>
+          <line x1="26" y1="10" x2="38" y2="10"/>
+          <line x1="50" y1="20" x2="54" y2="16"/>
+        </svg>
+        <div class="label">Cook Time:<br><b>15 Min</b></div>
+      </div>
+    </div>
+
+    <div class="rule thin"></div>
+
+    <div class="content">
+      <div class="col-ingredients">
+        <h2>Ingredients</h2>
+
+        <!-- Optional subhead; omit the .subhead divs if there's only one group -->
+        <div class="subhead">Group name:</div>
+        <ul>
+          <li>ingredient one</li>
+          <li>ingredient two</li>
+        </ul>
+
+        <div class="subhead">Another group:</div>
+        <ul>
+          <li>ingredient three</li>
+        </ul>
+      </div>
+
+      <div class="col-directions">
+        <h2>Directions</h2>
+        <ol>
+          <li><span class="lead">Optional bold lead-in:</span> first step.</li>
+          <li>second step.</li>
+          <li>third step.</li>
+        </ol>
+      </div>
+    </div>
+    <!--SOURCE-->
+  </div>
+</body>
+</html>
