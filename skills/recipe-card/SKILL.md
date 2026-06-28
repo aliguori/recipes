@@ -124,6 +124,29 @@ sips -s format png --out /tmp/big.png --resampleWidth 1600 <recipe>.pdf
    View `/tmp/card.png`. If content runs long, tighten wording or trim a
    low-value final step, then re-render.
 
+5. **Rebuild the carousel** so the browsable site stays current (see below).
+
+## The browsable carousel (`index.html`)
+
+`index.html` in the repo root is a single self-contained page that flips
+through every recipe as a carousel (prev/next buttons, ← / → arrow keys, and a
+recipe picker). It is a committed artifact — **whenever you add, remove, rename,
+or edit a recipe `.md`, rebuild it and commit the result:**
+
+```bash
+python3 skills/recipe-card/build_site.py
+```
+
+- `build_site.py` — globs `anthony/*.md` and `clare/*.md` by default (pass
+  explicit paths to limit, `-o` to change the output). It reuses
+  `recipe_card.render_html()` — the *same* function behind the PDFs — and embeds
+  each card in a style-isolated `<iframe srcdoc>`, so every slide looks identical
+  to its printed card with no CSS bleed. Each slide's title comes from the
+  recipe's frontmatter `title:`; the author label is the parent folder name.
+- Editing `template.html` changes both the PDFs and the carousel slides; just
+  re-run both `recipe_card.py` (per recipe) and `build_site.py` afterward.
+- The page needs no server or assets — open the file directly in a browser.
+
 ## How it works / tweaking
 
 - `recipe_card.py` — dependency-free (Python 3 stdlib only). Parses the markdown,
